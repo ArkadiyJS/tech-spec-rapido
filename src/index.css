@@ -5,19 +5,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--background-light)
+  background: rgb(69, 104, 220);
+  background: linear-gradient(180deg, rgba(69, 104, 220, 1) 0%, rgba(176, 106, 179, 1) 100%);
+  background-repeat: no-repeat;
+
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-:root {
-  --background: #181820;
-  --background-light: #21212B;
-
-  --primary: #FFFFFF;
-  --secondary: #F95738;
-  --terciary: #bbbbbb;
 }
