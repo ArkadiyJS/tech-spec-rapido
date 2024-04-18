@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import './App.css';
 import TicketCard from './components/ticketCard/ticketCard';
 
@@ -9,6 +10,26 @@ function App() {
 
   const buttonListNumbersTwo = [1, 2]
 
+
+  const generateRandomNumbers = () => {
+
+    const numbers = new Set()
+
+    while (numbers.size < 8) {
+      const randomNum = Math.floor(Math.random() * 19) + 1;
+      numbers.add(randomNum)
+
+    }
+
+    return Array.from(numbers)
+  }
+
+  const [showNumber, setShowNumver] = useState([])
+
+  const Pump = () => {
+    const arrNumb = generateRandomNumbers()
+    setShowNumver(arrNumb)
+  }
 
 
 
@@ -25,8 +46,8 @@ function App() {
 
       />
 
-
-
+      {showNumber.map((i) => (<p key={i}>{i}</p>))}
+      <button onClick={() => Pump()}>ну давай посмотрим</button>
 
     </div>
   );
