@@ -23,6 +23,7 @@ function TicketCard(props) {
         {props.buttonListNumbersOne.map((number) => (<button
           key={number}
           onClick={() => props.handleClick(number)}
+          style={{ backgroundColor: props.selectedFirstNumbers.includes(number) ? 'yellow' : 'white' }}
           disabled={props.selectedFirstNumbers.length >= 8 || props.selectedFirstNumbers.includes(number)}
 
         >{number}</button>))}
@@ -36,7 +37,7 @@ function TicketCard(props) {
 
           onClick={() => props.handleClickTwo(number)}
           disabled={props.selectedTwoNumbers.length >= 1 || props.selectedTwoNumbers.includes(number)}
-
+          style={{ backgroundColor: props.selectedTwoNumbers.includes(number) ? 'yellow' : 'white' }}
 
         >{number}</button>))}
       </div>
