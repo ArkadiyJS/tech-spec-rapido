@@ -42,7 +42,7 @@ function TicketCard(props) {
         >{number}</button>))}
       </div>
 
-      <div className='blok'><button className={s.resultPick}>Показать результат</button ></div>
+      <div className='block'><button onClick={() => props.showResult()} className={s.resultPick}>Показать результат</button ></div>
 
 
     </div>
