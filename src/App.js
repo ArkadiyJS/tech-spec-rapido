@@ -1,4 +1,5 @@
 
+
 import { useState } from 'react';
 import './App.css';
 import TicketCard from './components/ticketCard/ticketCard';
@@ -11,7 +12,7 @@ function App() {
   const buttonListNumbersTwo = [1, 2]
 
 
-  const generateRandomNumbers = () => {
+  const generateEightRandomNumbers = () => {
 
     const numbers = new Set()
 
@@ -24,12 +25,35 @@ function App() {
     return Array.from(numbers)
   }
 
-  const [showNumber, setShowNumver] = useState([])
-
-  const Pump = () => {
-    const arrNumb = generateRandomNumbers()
-    setShowNumver(arrNumb)
+  const generateOneRandomNumbers = () => {
+    const randomNum = Math.floor(Math.random() * 2) + 1;
+    return randomNum
   }
+
+
+  const magicWand = () => {
+    const arrNumbFiledOne = generateEightRandomNumbers()
+    const numbFieldTwo = generateOneRandomNumbers()
+
+
+  }
+
+  const [selectedFirstNumbers, setSelectedFirstNumbers] = useState([]);
+
+  const handleClick = (number) => {
+    if (selectedFirstNumbers.length < 8 && !selectedFirstNumbers.includes(number)) {
+      setSelectedFirstNumbers([...selectedFirstNumbers, number]);
+    }
+  };
+
+  const [selectedTwoNumbers, setSelectedTwoNumbers] = useState([]);
+
+  const handleClickTwo = (number) => {
+    if (selectedTwoNumbers.length < 1 && !selectedTwoNumbers.includes(number)) {
+      setSelectedTwoNumbers([...selectedTwoNumbers, number]);
+    }
+  };
+
 
 
 
@@ -44,10 +68,15 @@ function App() {
         buttonListNumbersOne={buttonListNumbersOne}
         buttonListNumbersTwo={buttonListNumbersTwo}
 
-      />
+        handleClick={handleClick}
+        selectedFirstNumbers={selectedFirstNumbers}
 
-      {showNumber.map((i) => (<p key={i}>{i}</p>))}
-      <button onClick={() => Pump()}>ну давай посмотрим</button>
+        handleClickTwo={handleClickTwo}
+        selectedTwoNumbers={selectedTwoNumbers}
+
+      />
+      <button onClick={() => magicWand()}></button>
+
 
     </div>
   );

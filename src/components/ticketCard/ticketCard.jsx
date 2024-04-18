@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import s from './ticketCard.module.css'
 
-function TicketCard({ buttonListNumbersOne, buttonListNumbersTwo }) {
+function TicketCard(props) {
 
 
 
@@ -20,13 +20,25 @@ function TicketCard({ buttonListNumbersOne, buttonListNumbersTwo }) {
       <span className={s.nameField}><span>Поле 1</span> Отметьте 8 чисел.</span>
 
       <div className={s.numberList}>
-        {buttonListNumbersOne.map((i) => (<button key={i} >{i}</button>))}
+        {props.buttonListNumbersOne.map((number) => (<button
+          key={number}
+          onClick={() => props.handleClick(number)}
+          disabled={props.selectedFirstNumbers.length >= 8 || props.selectedFirstNumbers.includes(number)}
+
+        >{number}</button>))}
       </div>
 
       <span><span>Поле 2</span> Отметьте 2 числа.</span>
 
       <div className={s.numberList}>
-        {buttonListNumbersTwo.map((i) => (<button key={i} >{i}</button>))}
+        {props.buttonListNumbersTwo.map((number) => (<button
+          key={number}
+
+          onClick={() => props.handleClickTwo(number)}
+          disabled={props.selectedTwoNumbers.length >= 1 || props.selectedTwoNumbers.includes(number)}
+
+
+        >{number}</button>))}
       </div>
 
       <div className='blok'><button className={s.resultPick}>Показать результат</button ></div>
