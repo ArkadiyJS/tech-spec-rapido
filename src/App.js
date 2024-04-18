@@ -11,6 +11,8 @@ function App() {
 
   const buttonListNumbersTwo = [1, 2]
 
+  const [selectedFirstNumbers, setSelectedFirstNumbers] = useState([]);
+  const [selectedTwoNumbers, setSelectedTwoNumbers] = useState([]);
 
   const generateEightRandomNumbers = () => {
 
@@ -34,11 +36,13 @@ function App() {
   const magicWand = () => {
     const arrNumbFiledOne = generateEightRandomNumbers()
     const numbFieldTwo = generateOneRandomNumbers()
-
-
+    setSelectedFirstNumbers([...arrNumbFiledOne]);
+    setSelectedTwoNumbers([numbFieldTwo]);
   }
 
-  const [selectedFirstNumbers, setSelectedFirstNumbers] = useState([]);
+
+
+
 
   const handleClick = (number) => {
     if (selectedFirstNumbers.length < 8 && !selectedFirstNumbers.includes(number)) {
@@ -46,7 +50,7 @@ function App() {
     }
   };
 
-  const [selectedTwoNumbers, setSelectedTwoNumbers] = useState([]);
+
 
   const handleClickTwo = (number) => {
     if (selectedTwoNumbers.length < 1 && !selectedTwoNumbers.includes(number)) {
@@ -73,6 +77,8 @@ function App() {
 
         handleClickTwo={handleClickTwo}
         selectedTwoNumbers={selectedTwoNumbers}
+
+        magicWand={magicWand}
 
       />
       <button onClick={() => magicWand()}></button>
