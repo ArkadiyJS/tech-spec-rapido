@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './App.css';
 import TicketCard from './components/ticketCard/ticketCard';
 import Modal from './components/modal/modal.jsx';
+import { sendData } from './api/post/selectedNumberUser.js';
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
   const [selectedTwoNumbers, setSelectedTwoNumbers] = useState([]);
 
   const [showYouWin, setShowYouWin] = useState(false)
-  const [showYouLose, setShowYouLose] = useState(false)
+
 
 
   const generateEightRandomNumbers = () => {
@@ -86,7 +87,7 @@ function App() {
 
     const resultFirstField = countMatches(arrNumbFiledOne, selectedFirstNumbers)
     const resultTwoField = countMatches(numbFieldTwo, selectedTwoNumbers)
-
+    sendData(arrNumbFiledOne, numbFieldTwo, showYouWin)
     if (resultFirstField + resultTwoField >= 4) {
 
       return setShowYouWin(true)
