@@ -1,4 +1,4 @@
-const API_URL = 'https://example.com/api';
+const API_URL = 'https://650c56cc47af3fd22f678083.mockapi.io/';
 
 export const sendData = async (arrNumbFiledOne, numbFieldTwo, showYouWin) => {
   try {
@@ -10,7 +10,7 @@ export const sendData = async (arrNumbFiledOne, numbFieldTwo, showYouWin) => {
       },
       isTicketWon: showYouWin
     };
-    console.log(dataToSend)
+
     const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
@@ -21,8 +21,8 @@ export const sendData = async (arrNumbFiledOne, numbFieldTwo, showYouWin) => {
 
 
     if (!response.ok) {
-      let retries = 2;
-      console.log('hi')
+      let retries = 1;
+
       const retryRequest = async () => {
         const retryResponse = await fetch(API_URL, {
           method: 'POST',
@@ -33,7 +33,7 @@ export const sendData = async (arrNumbFiledOne, numbFieldTwo, showYouWin) => {
         });
         if (retryResponse.ok) {
           const responseData = await retryResponse.json();
-          console.log(responseData);
+
         } else if (retries > 0) {
           retries--;
           setTimeout(retryRequest, 2000);
